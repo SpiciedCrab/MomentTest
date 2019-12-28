@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum TweetType: String {
     case basic = "basicTweet"
@@ -19,4 +20,6 @@ enum TweetType: String {
 protocol TweetSlicing {
     var tweetId: String { get set }
     var type: TweetType { get }
+    var cellHeight: CGFloat { get }
+    var cellWidth: CGFloat { get }
 }

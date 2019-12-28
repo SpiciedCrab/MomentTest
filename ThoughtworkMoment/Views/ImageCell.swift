@@ -12,12 +12,4 @@ class ImageCell: UICollectionViewCell, CellProviding{
     func setup(vm: TweetSlicing) {
         
     }
-    
-    var cellHeight: CGFloat {
-        return 100
-    }
-    
-    var cellWidth: CGFloat {
-        return 100
-    }
 }

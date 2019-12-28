@@ -32,8 +32,7 @@ class TweetMainViewModel {
     
     private func setupBindings() {
         refreshState = Observable.merge(
-            [refreshBegin.map(initPage)
-            ,refreshNext.map(increasePage)])
+            [refreshBegin.map(initPage)])
             .filter { $0 }.map { _ in  () }
             .trackActivity(activityIndicator)
             .flatMapLatest(obsRequest)

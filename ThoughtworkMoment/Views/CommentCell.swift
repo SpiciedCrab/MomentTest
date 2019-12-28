@@ -8,16 +8,26 @@
 
 import UIKit
 
-class CommentCell: UICollectionViewCell {
+class CommentCell: UICollectionViewCell, CellProviding {
+    
+    @IBOutlet weak private var nickNameLabel: UILabel!
+    @IBOutlet weak private var commentLabel: UILabel!
+    @IBOutlet weak private var labelConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak private var trailing: NSLayoutConstraint!
+    @IBOutlet weak private var leading: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        labelConstraint.constant = CGFloat.screenWidth - trailing.constant - leading.constant
+    }
+    
     func setup(vm: TweetSlicing) {
+        guard let commentSlicing = vm as? CommentTweet else {
+            return
+        }
         
-    }
-    
-    var cellHeight: CGFloat {
-        return 100
-    }
-    
-    var cellWidth: CGFloat {
-        return 100
+        nickNameLabel.text = commentSlicing.comment.sender?.nick ?? defaultNickName
+        commentLabel.text = commentSlicing.comment.content
     }
 }

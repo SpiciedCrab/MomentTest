@@ -14,9 +14,16 @@ import RxSwiftUtilities
 
 class ViewController: UIViewController {
 
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView! {
+        didSet {
+            let layout = AlighLeftFlowLayout()
+            layout.estimatedItemSize = CGSize(width: CGFloat.screenWidth, height: 99)
+            collectionView.setCollectionViewLayout(layout, animated: false)
+        }
+    }
     
-    let viewModel = TweetMainViewModel()
+    private let viewModel = TweetMainViewModel()
+    
     let disposeBag = DisposeBag()
     
     var tweets : [TweetInfo] = [] {
@@ -50,22 +57,27 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-}
-
-extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CellProviding else {
-            return CGSize.zero
-        }
-        
-        return CGSize(width: cell.cellWidth, height: cell.cellHeight)
+        let module = tweets[indexPath.section].subModules[indexPath.row]
+        return CGSize(width: module.cellWidth, height: module.cellHeight)
     }
-}
-
-extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return tweets[section].subModules.count
     }
     

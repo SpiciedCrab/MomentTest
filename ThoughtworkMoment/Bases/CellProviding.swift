@@ -10,10 +10,6 @@ import Foundation
 import UIKit
 
 protocol CellProviding {
-
-    var cellHeight: CGFloat { get }
-    var cellWidth: CGFloat { get }
-    
     func setup(vm: TweetSlicing)
     
     var view: UICollectionViewCell { get }
