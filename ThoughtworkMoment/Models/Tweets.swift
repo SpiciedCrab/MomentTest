@@ -21,9 +21,21 @@ struct Tweet: MomentCodable {
 }
 
 struct Sender: MomentCodable {
-    var userName: String = ""
+    var username: String = ""
     var nick: String = ""
     var avatar: String?
+    var profileImage: String?
+    
+    enum CodingKeys : String, CodingKey {
+        case username = "username"
+        case nick
+        case avatar
+        case profileImage = "profile-image"
+    }
+    
+    static func buildDefault() -> Sender {
+        return Sender(username: "正在载入...", nick: "正在载入...", avatar: nil, profileImage: nil)
+    }
 }
 
 struct Comment: MomentCodable {

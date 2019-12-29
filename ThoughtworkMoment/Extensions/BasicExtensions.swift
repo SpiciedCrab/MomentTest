@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 extension String {
     
     func fontSize(font: UIFont, maxWidth: CGFloat, maxHeight: CGFloat = 999) -> CGSize {

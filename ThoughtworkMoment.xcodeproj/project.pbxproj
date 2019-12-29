@@ -30,6 +30,12 @@
 		471D62EC23B6652100001375 /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62EB23B6652100001375 /* RxExtensions.swift */; };
 		471D62EE23B6EFF900001375 /* BasicExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62ED23B6EFF900001375 /* BasicExtensions.swift */; };
 		471D62F023B71FF600001375 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62EF23B71FF600001375 /* Layout.swift */; };
+		471D62F323B78AE700001375 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62F223B78AE700001375 /* ImageExtension.swift */; };
+		471D62F523B78FB900001375 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62F423B78FB900001375 /* ImageManager.swift */; };
+		471D62F723B883F000001375 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62F623B883F000001375 /* ProfileViewModel.swift */; };
+		471D62FA23B88B6500001375 /* UserInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62F823B88B6500001375 /* UserInfoHeaderView.swift */; };
+		471D62FB23B88B6500001375 /* UserInfoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 471D62F923B88B6500001375 /* UserInfoHeaderView.xib */; };
+		471D62FD23B8986500001375 /* Plugins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62FC23B8986500001375 /* Plugins.swift */; };
 		5BA4483A5685D719CE5AE1A5 /* Pods_ThoughtworkMoment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC22584B1A4ACD30CE1880A4 /* Pods_ThoughtworkMoment.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +87,12 @@
 		471D62EB23B6652100001375 /* RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
 		471D62ED23B6EFF900001375 /* BasicExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicExtensions.swift; sourceTree = "<group>"; };
 		471D62EF23B71FF600001375 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		471D62F223B78AE700001375 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		471D62F423B78FB900001375 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		471D62F623B883F000001375 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		471D62F823B88B6500001375 /* UserInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeaderView.swift; sourceTree = "<group>"; };
+		471D62F923B88B6500001375 /* UserInfoHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoHeaderView.xib; sourceTree = "<group>"; };
+		471D62FC23B8986500001375 /* Plugins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugins.swift; sourceTree = "<group>"; };
 		A847E63A7914A48E8972572D /* Pods-ThoughtworkMoment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtworkMoment.release.xcconfig"; path = "Target Support Files/Pods-ThoughtworkMoment/Pods-ThoughtworkMoment.release.xcconfig"; sourceTree = "<group>"; };
 		DC22584B1A4ACD30CE1880A4 /* Pods_ThoughtworkMoment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThoughtworkMoment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -144,6 +156,7 @@
 		471D629723B624B000001375 /* ThoughtworkMoment */ = {
 			isa = PBXGroup;
 			children = (
+				471D62F123B78AD300001375 /* ImageBox */,
 				471D62EA23B6651100001375 /* Extensions */,
 				471D62E123B64AED00001375 /* Views */,
 				471D62DE23B64A4F00001375 /* ViewModels */,
@@ -212,6 +225,8 @@
 			children = (
 				471D62DF23B64A6800001375 /* TweetSlices.swift */,
 				471D62E823B6501B00001375 /* TweetMainViewModel.swift */,
+				471D62F623B883F000001375 /* ProfileViewModel.swift */,
+				471D62FC23B8986500001375 /* Plugins.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -223,6 +238,8 @@
 				471D62E423B64D2B00001375 /* ImageCell.swift */,
 				471D62E623B64E4D00001375 /* CommentCell.swift */,
 				471D62EF23B71FF600001375 /* Layout.swift */,
+				471D62F823B88B6500001375 /* UserInfoHeaderView.swift */,
+				471D62F923B88B6500001375 /* UserInfoHeaderView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,6 +251,15 @@
 				471D62ED23B6EFF900001375 /* BasicExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		471D62F123B78AD300001375 /* ImageBox */ = {
+			isa = PBXGroup;
+			children = (
+				471D62F223B78AE700001375 /* ImageExtension.swift */,
+				471D62F423B78FB900001375 /* ImageManager.swift */,
+			);
+			path = ImageBox;
 			sourceTree = "<group>";
 		};
 		96083F9EAEF34FE76E700BA0 /* Pods */ = {
@@ -353,6 +379,7 @@
 			files = (
 				471D62A523B624B200001375 /* LaunchScreen.storyboard in Resources */,
 				471D62A223B624B200001375 /* Assets.xcassets in Resources */,
+				471D62FB23B88B6500001375 /* UserInfoHeaderView.xib in Resources */,
 				471D62A023B624B000001375 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,15 +461,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				471D62D323B638F400001375 /* CellProviding.swift in Sources */,
+				471D62F323B78AE700001375 /* ImageExtension.swift in Sources */,
 				471D629D23B624B000001375 /* ViewController.swift in Sources */,
 				471D62E323B64B0600001375 /* BasicTweetCell.swift in Sources */,
 				471D62CC23B62E0F00001375 /* Configurations.swift in Sources */,
 				471D62DD23B644F900001375 /* WrappedTweets.swift in Sources */,
+				471D62F723B883F000001375 /* ProfileViewModel.swift in Sources */,
+				471D62FD23B8986500001375 /* Plugins.swift in Sources */,
 				471D62F023B71FF600001375 /* Layout.swift in Sources */,
 				471D62E923B6501B00001375 /* TweetMainViewModel.swift in Sources */,
 				471D62E023B64A6800001375 /* TweetSlices.swift in Sources */,
 				471D62EC23B6652100001375 /* RxExtensions.swift in Sources */,
 				471D629923B624B000001375 /* AppDelegate.swift in Sources */,
+				471D62FA23B88B6500001375 /* UserInfoHeaderView.swift in Sources */,
+				471D62F523B78FB900001375 /* ImageManager.swift in Sources */,
 				471D62D023B62F9100001375 /* Apis.swift in Sources */,
 				471D62DB23B63CE800001375 /* Tweets.swift in Sources */,
 				471D62CB23B62E0F00001375 /* Firer.swift in Sources */,

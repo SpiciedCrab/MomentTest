@@ -17,6 +17,7 @@ class TweetMainViewModel {
     var tweetApi = TweetsApi(userName: "jsmith")
     private var totalPage = 10
     private var stored: [TweetInfo] = []
+    private let tweetValidator: TweetValidator
     
     // inputs
     var refreshBegin: PublishSubject<Void> = PublishSubject()
@@ -26,7 +27,11 @@ class TweetMainViewModel {
     var refreshState: Observable<[TweetInfo]>!
     let activityIndicator: ActivityIndicator = ActivityIndicator()
 
-    init() {
+    // ThoughtwokrDefaultTweetValidator will limit the total count of tweets to 5,
+    // So I use the ShowAllTweetValidator to ensure that the [pull up to add more]
+    // feature can normally work
+    init(tweetValidator: TweetValidator = ShowAllTweetValidator()) {
+        self.tweetValidator = tweetValidator
         setupBindings()
     }
     
@@ -37,6 +42,7 @@ class TweetMainViewModel {
             .trackActivity(activityIndicator)
             .flatMapLatest(obsRequest)
             .startWith(Tweets(list: []))
+            .map { $0.list.filter(self.tweetValidator.validate) }
             .map(sliceTwwets)
     }
     
@@ -69,9 +75,8 @@ class TweetMainViewModel {
         }
     }
     
-    private func sliceTwwets(tweetsSummary: Tweets) -> [TweetInfo] {
+    private func sliceTwwets(tweets: [Tweet]) -> [TweetInfo] {
         var sliced: [TweetInfo] = []
-        let tweets = tweetsSummary.list
         for var tweet in tweets {
             tweet.uniqueId = UUID().uuidString
             var modules: [TweetSlicing] = []

@@ -13,6 +13,7 @@ let defaultNickName = "这孩子木有名字"
 let nickFont = UIFont.preferredFont(forTextStyle: .subheadline)
 let contentFont = UIFont.preferredFont(forTextStyle: .caption1)
 
+// MARK: - TweetInfo
 struct TweetInfo {
     var tweetId: String = ""
     var subModules: [TweetSlicing] = []
@@ -22,6 +23,7 @@ struct TweetInfo {
     }
 }
 
+// MARK: - BasicTweet
 class BasicTweet: TweetSlicing {
     var cellHeight: CGFloat {
         return nickFont.lineHeight + 10 + 10 + content.fontSize(
@@ -50,8 +52,13 @@ class BasicTweet: TweetSlicing {
     var nickName: String {
         return sender?.nick ?? defaultNickName
     }
+    
+    var senderAvatar: String {
+        return sender?.avatar ?? ""
+    }
 }
 
+// MARK: - ImageTweet
 class ImageTweet: TweetSlicing {
     var tweetId: String = ""
     var type: TweetType  {
@@ -73,6 +80,7 @@ class ImageTweet: TweetSlicing {
     }
 }
 
+// MARK: - CommentTweet
 class CommentTweet: TweetSlicing {
     var tweetId: String = ""
     var type: TweetType {

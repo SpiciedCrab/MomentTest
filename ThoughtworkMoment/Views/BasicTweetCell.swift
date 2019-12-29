@@ -29,5 +29,11 @@ class BasicTweetCell: UICollectionViewCell, CellProviding {
         
         contentLabel.text = basicSlicing.content
         nickNameLabel.text = basicSlicing.nickName
+        avatarImage.networkImage(path: basicSlicing.senderAvatar)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarImage.cancelDownloading()
     }
 }

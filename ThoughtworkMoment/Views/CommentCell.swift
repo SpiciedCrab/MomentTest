@@ -27,7 +27,7 @@ class CommentCell: UICollectionViewCell, CellProviding {
             return
         }
         
-        nickNameLabel.text = commentSlicing.comment.sender?.nick ?? defaultNickName
+        nickNameLabel.text = "\(commentSlicing.comment.sender?.nick ?? defaultNickName) :"
         commentLabel.text = commentSlicing.comment.content
     }
 }
