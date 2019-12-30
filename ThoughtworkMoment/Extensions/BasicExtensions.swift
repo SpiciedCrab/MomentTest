@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 extension String {
     
     func fontSize(font: UIFont, maxWidth: CGFloat, maxHeight: CGFloat = 999) -> CGSize {
@@ -28,5 +27,24 @@ extension CGFloat {
     
     static var screenHeight: CGFloat {
         return UIScreen.main.bounds.height
+    }
+}
+
+extension UIViewController {
+    static public var current: UIViewController? {
+        var vc: UIViewController? = UIApplication.shared.windows.last?.rootViewController
+        while true {
+            if let tabVC = vc as? UITabBarController {
+                vc = tabVC.selectedViewController
+            } else if let navVC = vc as? UINavigationController {
+                vc = navVC.visibleViewController
+            } else if let presentedVC = vc?.presentedViewController {
+                vc = presentedVC
+            } else {
+                break
+            }
+        }
+    
+        return vc
     }
 }

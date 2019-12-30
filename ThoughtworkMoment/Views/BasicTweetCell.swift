@@ -19,7 +19,6 @@ class BasicTweetCell: UICollectionViewCell, CellProviding {
         super.awakeFromNib()
         container.translatesAutoresizingMaskIntoConstraints = false
         contentLabel.translatesAutoresizingMaskIntoConstraints = false
-        labelConstraint.constant = CGFloat.screenWidth - 40 - 30
     }
     
     func setup(vm: TweetSlicing) {
@@ -29,7 +28,9 @@ class BasicTweetCell: UICollectionViewCell, CellProviding {
         
         contentLabel.text = basicSlicing.content
         nickNameLabel.text = basicSlicing.nickName
-        avatarImage.networkImage(path: basicSlicing.senderAvatar)
+        avatarImage.networkImage(path: basicSlicing.senderAvatar, size: CGSize(width: 40, height: 40))
+    
+        labelConstraint.constant = CGFloat.screenWidth
     }
     
     override func prepareForReuse() {

@@ -62,7 +62,8 @@ class AlighLeftFlowLayout: UICollectionViewFlowLayout {
         
         let strecthedCurrentFrame = CGRect(x: sectionInset.left, y: currentFrame.origin.y, width: layoutWidth, height: currentFrame.size.height)
         
-        let isFirstItemInRow = !previousFrame!.intersects(strecthedCurrentFrame)
+        
+        let isFirstItemInRow = !previousFrame!.intersects(strecthedCurrentFrame) || currentFrame.width != currentFrame.height
         
         if isFirstItemInRow {
             currentItemAttributes.leftAlignFrame(with: sectionInset,

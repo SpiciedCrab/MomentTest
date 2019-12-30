@@ -25,3 +25,15 @@ struct ShowAllTweetValidator: TweetValidator {
         return true
     }
 }
+
+struct NoImagesTweetValidator: TweetValidator {
+    func validate(twwet: Tweet) -> Bool {
+        return twwet.images.isEmpty
+    }
+}
+
+struct NoCommentsTweetValidator: TweetValidator {
+    func validate(twwet: Tweet) -> Bool {
+        return twwet.comments.isEmpty
+    }
+}

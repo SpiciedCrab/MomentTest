@@ -13,12 +13,16 @@ class ImageManager {
     static let shared: ImageManager = ImageManager()
     private var sessionCache: [String: URLSessionDataTask] = [:]
     private var imageCache: [String: UIImage] = [:]
+    private let imageSignal = DispatchSemaphore(value: 1)
+    private let sessionSignal = DispatchSemaphore(value: 1)
     
     func cacheSession(key: String, task: URLSessionDataTask) {
         if(sessionCache.keys.contains(key)) {
             sessionCache[key]?.cancel()
         }
+        sessionSignal.wait()
         sessionCache[key] = task
+        sessionSignal.signal()
     }
     
     func cancelSession(key: String) {
@@ -31,7 +35,9 @@ class ImageManager {
     }
     
     func cacheImage(path: String, image: UIImage) {
+        imageSignal.wait()
         imageCache[path] = image
+        imageSignal.signal()
     }
     
     func findCachedImage(path: String) -> UIImage? {

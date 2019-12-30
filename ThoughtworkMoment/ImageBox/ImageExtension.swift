@@ -11,17 +11,18 @@ import UIKit
 
 extension UIImageView {
     
-    func networkImage(path: String, contentMode mode: UIView.ContentMode = .center) {
+    func networkImage(path: String, size: CGSize ) {
         guard let url = URL(string: path) else {
             return
         }
-        contentMode = mode
         
         if let cachedImage = ImageManager.shared.findCachedImage(path: path) {
             self.image = cachedImage
             return
         }
         
+        var viewSize = size
+        let ratio = size.width / size.height
         let task = URLSession.shared.dataTask(with: url) { data, resp, error in
             ImageManager.shared.finishSession(key: "\(self.hashValue)")
             guard let httpURLResponse = resp as? HTTPURLResponse,
@@ -31,23 +32,67 @@ extension UIImageView {
                 let data = data, error == nil,
                 let image = UIImage(data: data) else { return }
             
-            DispatchQueue.main.async() {
-                let sizeChange = self.frame.size
+            let imageSize = image.size
+            
+            DispatchQueue(label: "imageQue").async {
+                var rectToDraw = CGRect.zero
+                let imageRatio = imageSize.width / imageSize.height
+                if imageRatio > ratio {
+                    rectToDraw = CGRect(x: 0, y: 0,
+                                        width: ratio * imageSize.height,
+                                        height: imageSize.height )
+                    
+                    viewSize = CGSize(width: viewSize.height * imageRatio,  height: viewSize.height)
+                } else {
+                    rectToDraw = CGRect(x: 0, y: 0,
+                                        width: viewSize.width ,
+                                        height: viewSize.width / ratio )
+                    viewSize = CGSize(width: viewSize.width,  height: viewSize.width / imageRatio)
+
+                }
+
                 
-                UIGraphicsBeginImageContextWithOptions(sizeChange, false, 0.0)
+
+//                if imageSize.width <= imageSize.height {
+//                    let originY = (imageSize.height - imageSize.width) / 2
+//                    rectToDraw = CGRect(x: 0, y: originY,
+//                                        width: imageSize.width ,
+//                                        height: imageSize.width )
+//                } else {
+//                    let originX = (imageSize.width - imageSize.height) / 2
+//                    rectToDraw = CGRect(x: originX, y: 0,
+//                                        width: imageSize.height ,
+//                                        height: imageSize.height )
+//                }
                 
-                image.draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
+//                guard let croppedCg = image.cgImage?.cropping(to: rectToDraw) else {
+//                    return
+//                }
+//
+//                let croppedImage = UIImage(cgImage: croppedCg)
+//
+                UIGraphicsBeginImageContextWithOptions(viewSize, false, UIScreen.main.scale)
                 
-                let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+                image.draw(in: CGRect(origin: CGPoint.zero, size: viewSize))
+                
+                let drawedImage = UIGraphicsGetImageFromCurrentImageContext()
                 
                 UIGraphicsEndImageContext()
                 
-                guard let realImage = resizedImage else {
+                guard let realImage = drawedImage else {
                     return
                 }
                 
-                self.image = realImage
+                DispatchQueue.main.async {
+                    self.image = realImage
+                }
+                
                 ImageManager.shared.cacheImage(path: path, image: realImage)
+            }
+            
+            DispatchQueue.main.async() {
+                
+                
             }
         }
         

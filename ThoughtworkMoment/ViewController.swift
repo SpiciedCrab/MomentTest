@@ -11,16 +11,15 @@ import RxSwift
 import RxRelay
 import RxCocoa
 import RxSwiftUtilities
+import ESPullToRefresh
 
 class ViewController: UIViewController {
 
     // MARK: - UIs
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
-            let layout = AlighLeftFlowLayout()
-            layout.estimatedItemSize = CGSize(width: CGFloat.screenWidth, height: 99)
-            collectionView.setCollectionViewLayout(layout, animated: false)
             
+            initialLayout()
             collectionView.register(UINib(nibName: "UserInfoHeaderView",
                                           bundle: Bundle.main),
                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -29,6 +28,17 @@ class ViewController: UIViewController {
             collectionView.register(UICollectionReusableView.self,
                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                     withReuseIdentifier: "blank")
+            
+            collectionView.es.addPullToRefresh {
+                self.collectionView.es.resetNoMoreData()
+                self.viewModel.refreshBegin.onNext(())
+            }
+            
+            collectionView.es.addInfiniteScrolling {
+                self.viewModel.refreshNext.accept(true)
+                self.collectionView.es.noticeNoMoreData()
+            }
+            
         }
     }
     
@@ -37,6 +47,16 @@ class ViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var tweets : [TweetInfo] = [] {
         didSet{
+            collectionView.es.stopPullToRefresh(ignoreDate: true, ignoreFooter: false)
+            Observable.merge(tweets.map { $0.didTapHandled }).map { $0.index }.asDriver(onErrorJustReturn: 0).drive(onNext: {[weak self] (idx) in
+                guard let `self` = self else { return }
+                self.collectionView.collectionViewLayout.invalidateLayout()
+                UIView.performWithoutAnimation {
+                    self.collectionView.reloadSections(IndexSet(integer: idx))
+                }
+                self.initialLayout()
+            }).disposed(by: disposeBag)
+            
             collectionView.reloadData()
         }
     }
@@ -58,14 +78,23 @@ class ViewController: UIViewController {
                 guard let `self` = self else { return }
                 self.tweets = infos
             }).disposed(by: disposeBag)
-        
-        collectionView.rx.contentOffset
-            .filter { $0.y >= self.collectionView.contentSize.height / 3 }
-            .map { _ in () }
-            .bind(to: viewModel.refreshNext)
-            .disposed(by: disposeBag)
+    
         
         viewModel.refreshBegin.onNext(())
+        
+        NotificationCenter .default.rx.notification(UIDevice.orientationDidChangeNotification)
+            .subscribe(onNext: {[weak self] noti in
+                guard let `self` = self else { return }
+                self.updateViewConstraints()
+                self.collectionView.reloadData()
+            }).disposed(by: disposeBag)
+    }
+    
+    private func initialLayout() {
+        let layout = AlighLeftFlowLayout()
+        layout.estimatedItemSize = CGSize(width: CGFloat.screenWidth, height: 500)
+        collectionView.setCollectionViewLayout(layout, animated: false)
+        
     }
 }
 
@@ -101,7 +130,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         if(section != 0 ) {
             return CGSize.zero
         }
-        return CGSize(width: CGFloat.screenWidth, height: CGFloat.screenHeight / 4)
+        return CGSize(width: CGFloat.screenWidth, height: 300)
     }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
@@ -129,5 +158,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         
         cell.setup(vm: module)
         return cell.view
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let section = tweets[indexPath.section]
+        section.onItemTapped.onNext(indexPath)
+        self.collectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.centeredVertically, animated: true)
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 enum TweetType: String {
     case basic = "basicTweet"
@@ -22,4 +23,7 @@ protocol TweetSlicing {
     var type: TweetType { get }
     var cellHeight: CGFloat { get }
     var cellWidth: CGFloat { get }
+    
+    var onItemTapped: PublishSubject<Void>  { get set }
+    var didTapHandled: PublishSubject<Bool>  { get set }
 }

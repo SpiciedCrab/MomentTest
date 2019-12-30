@@ -18,13 +18,14 @@ class TweetMainViewModel {
     private var totalPage = 10
     private var stored: [TweetInfo] = []
     private let tweetValidator: TweetValidator
+    private let disposeBag = DisposeBag()
     
     // inputs
-    var refreshBegin: PublishSubject<Void> = PublishSubject()
-    var refreshNext: PublishSubject<Void> = PublishSubject()
+    let refreshBegin: PublishSubject<Void> = PublishSubject()
+    let refreshNext: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     
     // outputs
-    var refreshState: Observable<[TweetInfo]>!
+    let refreshState: BehaviorRelay<[TweetInfo]> = BehaviorRelay(value: [])
     let activityIndicator: ActivityIndicator = ActivityIndicator()
 
     // ThoughtwokrDefaultTweetValidator will limit the total count of tweets to 5,
@@ -36,14 +37,25 @@ class TweetMainViewModel {
     }
     
     private func setupBindings() {
-        refreshState = Observable.merge(
-            [refreshBegin.map(initPage)])
+        refreshBegin
+            .do(onNext: {[weak self] (_) in
+                guard let `self` = self else { return }
+                self.refreshNext.accept(false)
+            }).map(initPage)
             .filter { $0 }.map { _ in  () }
             .trackActivity(activityIndicator)
             .flatMapLatest(obsRequest)
-            .startWith(Tweets(list: []))
             .map { $0.list.filter(self.tweetValidator.validate) }
-            .map(sliceTwwets)
+            .map(sliceTwwets).bind(to: refreshState)
+            .disposed(by: disposeBag)
+        
+        refreshNext.distinctUntilChanged().filter { $0 }
+            .map { _ in  }.map(increasePage)
+            .filter { $0 }
+            .map { _ in self.stored }
+            .bind(to: refreshState)
+            .disposed(by: disposeBag)
+        
     }
     
     private func initPage() -> Bool {
@@ -52,8 +64,9 @@ class TweetMainViewModel {
     }
     
     private func increasePage() -> Bool {
+        
         tweetApi.currentPage += 1
-        return tweetApi.currentPage >= totalPage
+        return tweetApi.currentPage <= totalPage
     }
     
     
@@ -77,6 +90,7 @@ class TweetMainViewModel {
     
     private func sliceTwwets(tweets: [Tweet]) -> [TweetInfo] {
         var sliced: [TweetInfo] = []
+        var index = 0;
         for var tweet in tweets {
             tweet.uniqueId = UUID().uuidString
             var modules: [TweetSlicing] = []
@@ -98,7 +112,8 @@ class TweetMainViewModel {
                 modules.append(contentsOf: commentsT)
             }
             
-            sliced.append(TweetInfo(tweetId: tweet.uniqueId, subModules: modules))
+            sliced.append(TweetInfo(tweetId: tweet.uniqueId, index: index ,subModules: modules))
+            index += 1
         }
         
         if(tweetApi.isFirstPage) {
@@ -107,6 +122,6 @@ class TweetMainViewModel {
             stored.append(contentsOf: sliced)
         }
         
-        return stored
+        return [] + stored.prefix(upTo: 5)
     }
 }
