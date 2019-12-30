@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +17,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="531" height="279"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4FX-vd-zHn">
-                    <rect key="frame" x="423" y="211" width="88" height="88"/>
+                    <rect key="frame" x="423" y="231" width="88" height="88"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="88" id="Brw-Wz-C1u"/>
                         <constraint firstAttribute="height" constant="88" id="XAK-4f-r9k"/>
@@ -31,7 +32,7 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="ZDU-AK-goV" secondAttribute="bottom" constant="50" id="Nd6-d9-5zp"/>
-                <constraint firstItem="4FX-vd-zHn" firstAttribute="bottom" secondItem="ZDU-AK-goV" secondAttribute="bottom" constant="20" id="U4m-U6-M5t"/>
+                <constraint firstItem="4FX-vd-zHn" firstAttribute="bottom" secondItem="ZDU-AK-goV" secondAttribute="bottom" constant="40" id="U4m-U6-M5t"/>
                 <constraint firstAttribute="trailing" secondItem="4FX-vd-zHn" secondAttribute="trailing" constant="20" id="Ulc-z6-SPk"/>
                 <constraint firstItem="ZDU-AK-goV" firstAttribute="trailing" secondItem="U6b-Vx-4bR" secondAttribute="trailing" id="XvR-dJ-hvj"/>
                 <constraint firstItem="ZDU-AK-goV" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="ZPF-4P-oK7"/>

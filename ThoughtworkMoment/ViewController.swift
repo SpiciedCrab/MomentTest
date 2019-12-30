@@ -31,7 +31,7 @@ class ViewController: UIViewController {
             
             collectionView.es.addPullToRefresh {
                 self.collectionView.es.resetNoMoreData()
-                self.viewModel.refreshBegin.onNext(())
+                self.viewModel.refreshBegin.accept(())
             }
             
             collectionView.es.addInfiniteScrolling {
@@ -48,6 +48,7 @@ class ViewController: UIViewController {
     private var tweets : [TweetInfo] = [] {
         didSet{
             collectionView.es.stopPullToRefresh(ignoreDate: true, ignoreFooter: false)
+            
             Observable.merge(tweets.map { $0.didTapHandled }).map { $0.index }.asDriver(onErrorJustReturn: 0).drive(onNext: {[weak self] (idx) in
                 guard let `self` = self else { return }
                 self.collectionView.collectionViewLayout.invalidateLayout()
@@ -79,15 +80,32 @@ class ViewController: UIViewController {
                 self.tweets = infos
             }).disposed(by: disposeBag)
     
-        
-        viewModel.refreshBegin.onNext(())
-        
         NotificationCenter .default.rx.notification(UIDevice.orientationDidChangeNotification)
             .subscribe(onNext: {[weak self] noti in
                 guard let `self` = self else { return }
                 self.updateViewConstraints()
                 self.collectionView.reloadData()
             }).disposed(by: disposeBag)
+        
+        
+        viewModel.errorOutput.observeOn(MainScheduler.asyncInstance).bind { (error) in
+            let alert = UIAlertController(title: "出错啦", message: error, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: {[weak self] action in
+                guard let `self` = self else { return }
+                self.viewModel.refreshBegin.accept(())
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+            self.present(alert, animated: true, completion: nil)
+        }.disposed(by: disposeBag)
+        
+        collectionView.es.startPullToRefresh()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     private func initialLayout() {

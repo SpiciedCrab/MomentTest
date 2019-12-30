@@ -21,12 +21,13 @@ class TweetMainViewModel {
     private let disposeBag = DisposeBag()
     
     // inputs
-    let refreshBegin: PublishSubject<Void> = PublishSubject()
+    let refreshBegin: PublishRelay<Void> = PublishRelay()
     let refreshNext: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     
     // outputs
     let refreshState: BehaviorRelay<[TweetInfo]> = BehaviorRelay(value: [])
     let activityIndicator: ActivityIndicator = ActivityIndicator()
+    let errorOutput: PublishRelay<String> = PublishRelay()
 
     // ThoughtwokrDefaultTweetValidator will limit the total count of tweets to 5,
     // So I use the ShowAllTweetValidator to ensure that the [pull up to add more]
@@ -46,7 +47,11 @@ class TweetMainViewModel {
             .trackActivity(activityIndicator)
             .flatMapLatest(obsRequest)
             .map { $0.list.filter(self.tweetValidator.validate) }
-            .map(sliceTwwets).bind(to: refreshState)
+            .map(sliceTwwets).catchError({[weak self] (error)  in
+                guard let self = self else { return Observable.of([]) }
+                self.errorOutput.accept(error.localizedDescription)
+                return Observable.of([])
+            }).bind(to: refreshState)
             .disposed(by: disposeBag)
         
         refreshNext.distinctUntilChanged().filter { $0 }
@@ -71,20 +76,27 @@ class TweetMainViewModel {
     
     
     private func obsRequest() -> Observable<Tweets> {
-        return Observable.create {[weak self] (sub: AnyObserver<Tweets>) -> Disposable in
+        return Observable.create {[weak self] (sub: AnyObserver<Result<Tweets, MomentException>>) -> Disposable in
             guard let `self` = self else { return Disposables.create() }
             self.fire.fire(request: &self.tweetApi) { (result: Result<Tweets, MomentException>) in
-                switch result {
-                case .success(let sweets):
-                    sub.onNext(sweets)
-                case .failure(let error):
-                    sub.onError(error)
-                }
+                sub.onNext(result)
+                sub.onCompleted()
             }
             
             return Disposables.create {
                 self.tweetApi.cancelToken?.cancel()
             }
+        }.map(resultToTweets)
+    }
+    
+    private func resultToTweets(result: Result<Tweets, MomentException>) -> Tweets {
+        switch result {
+        case .success(let tweets):
+            return tweets
+        case .failure(let error):
+            let realError = error as MomentException
+            errorOutput.accept(realError.msg)
+            return Tweets(list: [])
         }
     }
     
@@ -122,6 +134,6 @@ class TweetMainViewModel {
             stored.append(contentsOf: sliced)
         }
         
-        return [] + stored.prefix(upTo: 5)
+        return stored.count >= 5 ? ([] + stored.prefix(upTo: 5)) : stored
     }
 }

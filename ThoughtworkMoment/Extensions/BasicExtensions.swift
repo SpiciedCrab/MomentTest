@@ -32,7 +32,7 @@ extension CGFloat {
 
 extension UIViewController {
     static public var current: UIViewController? {
-        var vc: UIViewController? = UIApplication.shared.windows.last?.rootViewController
+        var vc: UIViewController? = UIApplication.shared.windows.first?.rootViewController
         while true {
             if let tabVC = vc as? UITabBarController {
                 vc = tabVC.selectedViewController

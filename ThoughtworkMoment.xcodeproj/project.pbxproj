@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		471D629923B624B000001375 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D629823B624B000001375 /* AppDelegate.swift */; };
-		471D629B23B624B000001375 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D629A23B624B000001375 /* SceneDelegate.swift */; };
 		471D629D23B624B000001375 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D629C23B624B000001375 /* ViewController.swift */; };
 		471D62A023B624B000001375 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471D629E23B624B000001375 /* Main.storyboard */; };
 		471D62A223B624B200001375 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 471D62A123B624B200001375 /* Assets.xcassets */; };
@@ -36,6 +35,8 @@
 		471D62FA23B88B6500001375 /* UserInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62F823B88B6500001375 /* UserInfoHeaderView.swift */; };
 		471D62FB23B88B6500001375 /* UserInfoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 471D62F923B88B6500001375 /* UserInfoHeaderView.xib */; };
 		471D62FD23B8986500001375 /* Plugins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62FC23B8986500001375 /* Plugins.swift */; };
+		4762A8BB23B9B86D00497E2C /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762A8B923B9B86D00497E2C /* ContentDetailViewController.swift */; };
+		4762A8BC23B9B86D00497E2C /* ContentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4762A8BA23B9B86D00497E2C /* ContentDetailViewController.xib */; };
 		5BA4483A5685D719CE5AE1A5 /* Pods_ThoughtworkMoment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC22584B1A4ACD30CE1880A4 /* Pods_ThoughtworkMoment.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +61,6 @@
 		1CBD136AB53E98F7BB1237C2 /* Pods-ThoughtworkMoment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtworkMoment.debug.xcconfig"; path = "Target Support Files/Pods-ThoughtworkMoment/Pods-ThoughtworkMoment.debug.xcconfig"; sourceTree = "<group>"; };
 		471D629523B624B000001375 /* ThoughtworkMoment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThoughtworkMoment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		471D629823B624B000001375 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		471D629A23B624B000001375 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		471D629C23B624B000001375 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		471D629F23B624B000001375 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		471D62A123B624B200001375 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,6 +93,8 @@
 		471D62F823B88B6500001375 /* UserInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeaderView.swift; sourceTree = "<group>"; };
 		471D62F923B88B6500001375 /* UserInfoHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoHeaderView.xib; sourceTree = "<group>"; };
 		471D62FC23B8986500001375 /* Plugins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugins.swift; sourceTree = "<group>"; };
+		4762A8B923B9B86D00497E2C /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
+		4762A8BA23B9B86D00497E2C /* ContentDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentDetailViewController.xib; sourceTree = "<group>"; };
 		A847E63A7914A48E8972572D /* Pods-ThoughtworkMoment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtworkMoment.release.xcconfig"; path = "Target Support Files/Pods-ThoughtworkMoment/Pods-ThoughtworkMoment.release.xcconfig"; sourceTree = "<group>"; };
 		DC22584B1A4ACD30CE1880A4 /* Pods_ThoughtworkMoment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThoughtworkMoment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -164,7 +166,6 @@
 				471D62D123B6389A00001375 /* Bases */,
 				471D62C823B62E0F00001375 /* Request */,
 				471D629823B624B000001375 /* AppDelegate.swift */,
-				471D629A23B624B000001375 /* SceneDelegate.swift */,
 				471D629C23B624B000001375 /* ViewController.swift */,
 				471D629E23B624B000001375 /* Main.storyboard */,
 				471D62A123B624B200001375 /* Assets.xcassets */,
@@ -240,6 +241,8 @@
 				471D62EF23B71FF600001375 /* Layout.swift */,
 				471D62F823B88B6500001375 /* UserInfoHeaderView.swift */,
 				471D62F923B88B6500001375 /* UserInfoHeaderView.xib */,
+				4762A8B923B9B86D00497E2C /* ContentDetailViewController.swift */,
+				4762A8BA23B9B86D00497E2C /* ContentDetailViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				471D62A523B624B200001375 /* LaunchScreen.storyboard in Resources */,
+				4762A8BC23B9B86D00497E2C /* ContentDetailViewController.xib in Resources */,
 				471D62A223B624B200001375 /* Assets.xcassets in Resources */,
 				471D62FB23B88B6500001375 /* UserInfoHeaderView.xib in Resources */,
 				471D62A023B624B000001375 /* Main.storyboard in Resources */,
@@ -473,6 +477,7 @@
 				471D62F023B71FF600001375 /* Layout.swift in Sources */,
 				471D62E923B6501B00001375 /* TweetMainViewModel.swift in Sources */,
 				471D62E023B64A6800001375 /* TweetSlices.swift in Sources */,
+				4762A8BB23B9B86D00497E2C /* ContentDetailViewController.swift in Sources */,
 				471D62EC23B6652100001375 /* RxExtensions.swift in Sources */,
 				471D629923B624B000001375 /* AppDelegate.swift in Sources */,
 				471D62FA23B88B6500001375 /* UserInfoHeaderView.swift in Sources */,
@@ -481,7 +486,6 @@
 				471D62DB23B63CE800001375 /* Tweets.swift in Sources */,
 				471D62CB23B62E0F00001375 /* Firer.swift in Sources */,
 				471D62CE23B62E4B00001375 /* DemoRequestConfig.swift in Sources */,
-				471D629B23B624B000001375 /* SceneDelegate.swift in Sources */,
 				471D62E523B64D2B00001375 /* ImageCell.swift in Sources */,
 				471D62E723B64E4D00001375 /* CommentCell.swift in Sources */,
 				471D62EE23B6EFF900001375 /* BasicExtensions.swift in Sources */,
@@ -589,7 +593,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -643,7 +647,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -659,7 +663,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5K7P4774AQ;
+				DEVELOPMENT_TEAM = 9S7PX8JB5Y;
 				INFOPLIST_FILE = ThoughtworkMoment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -678,7 +682,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5K7P4774AQ;
+				DEVELOPMENT_TEAM = 9S7PX8JB5Y;
 				INFOPLIST_FILE = ThoughtworkMoment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
