@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E6E12C7EB65EB5237F64888 /* Pods_ThoughtworkMomentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFD787411A8844CD8CFC91D /* Pods_ThoughtworkMomentTests.framework */; };
 		471D629923B624B000001375 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D629823B624B000001375 /* AppDelegate.swift */; };
 		471D629D23B624B000001375 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D629C23B624B000001375 /* ViewController.swift */; };
 		471D62A023B624B000001375 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471D629E23B624B000001375 /* Main.storyboard */; };
 		471D62A223B624B200001375 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 471D62A123B624B200001375 /* Assets.xcassets */; };
 		471D62A523B624B200001375 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471D62A323B624B200001375 /* LaunchScreen.storyboard */; };
-		471D62B023B624B200001375 /* ThoughtworkMomentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62AF23B624B200001375 /* ThoughtworkMomentTests.swift */; };
-		471D62BB23B624B200001375 /* ThoughtworkMomentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62BA23B624B200001375 /* ThoughtworkMomentUITests.swift */; };
 		471D62CB23B62E0F00001375 /* Firer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62C923B62E0F00001375 /* Firer.swift */; };
 		471D62CC23B62E0F00001375 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62CA23B62E0F00001375 /* Configurations.swift */; };
 		471D62CE23B62E4B00001375 /* DemoRequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62CD23B62E4B00001375 /* DemoRequestConfig.swift */; };
@@ -37,6 +36,10 @@
 		471D62FD23B8986500001375 /* Plugins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D62FC23B8986500001375 /* Plugins.swift */; };
 		4762A8BB23B9B86D00497E2C /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762A8B923B9B86D00497E2C /* ContentDetailViewController.swift */; };
 		4762A8BC23B9B86D00497E2C /* ContentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4762A8BA23B9B86D00497E2C /* ContentDetailViewController.xib */; };
+		4762A8BE23B9CF1C00497E2C /* TweetValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762A8BD23B9CF1C00497E2C /* TweetValidator.swift */; };
+		4762A8C023B9CF2A00497E2C /* TweetFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762A8BF23B9CF2A00497E2C /* TweetFetcher.swift */; };
+		4762A8C223B9CF3900497E2C /* TweetHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762A8C123B9CF3900497E2C /* TweetHandler.swift */; };
+		4762A8C623BAEF8800497E2C /* TweetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762A8C523BAEF8800497E2C /* TweetsTests.swift */; };
 		5BA4483A5685D719CE5AE1A5 /* Pods_ThoughtworkMoment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC22584B1A4ACD30CE1880A4 /* Pods_ThoughtworkMoment.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,17 +51,13 @@
 			remoteGlobalIDString = 471D629423B624B000001375;
 			remoteInfo = ThoughtworkMoment;
 		};
-		471D62B723B624B200001375 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 471D628D23B624B000001375 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 471D629423B624B000001375;
-			remoteInfo = ThoughtworkMoment;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		022458CAEEA7F3605C5425CE /* Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests.debug.xcconfig"; path = "Target Support Files/Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests/Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0EFD787411A8844CD8CFC91D /* Pods_ThoughtworkMomentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThoughtworkMomentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CBD136AB53E98F7BB1237C2 /* Pods-ThoughtworkMoment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtworkMoment.debug.xcconfig"; path = "Target Support Files/Pods-ThoughtworkMoment/Pods-ThoughtworkMoment.debug.xcconfig"; sourceTree = "<group>"; };
+		326994D7272642C00B0CD5B6 /* Pods-ThoughtworkMomentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtworkMomentTests.release.xcconfig"; path = "Target Support Files/Pods-ThoughtworkMomentTests/Pods-ThoughtworkMomentTests.release.xcconfig"; sourceTree = "<group>"; };
 		471D629523B624B000001375 /* ThoughtworkMoment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThoughtworkMoment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		471D629823B624B000001375 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		471D629C23B624B000001375 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,11 +66,7 @@
 		471D62A423B624B200001375 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		471D62A623B624B200001375 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		471D62AB23B624B200001375 /* ThoughtworkMomentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThoughtworkMomentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		471D62AF23B624B200001375 /* ThoughtworkMomentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtworkMomentTests.swift; sourceTree = "<group>"; };
 		471D62B123B624B200001375 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		471D62B623B624B200001375 /* ThoughtworkMomentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThoughtworkMomentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		471D62BA23B624B200001375 /* ThoughtworkMomentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtworkMomentUITests.swift; sourceTree = "<group>"; };
-		471D62BC23B624B200001375 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		471D62C923B62E0F00001375 /* Firer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firer.swift; sourceTree = "<group>"; };
 		471D62CA23B62E0F00001375 /* Configurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		471D62CD23B62E4B00001375 /* DemoRequestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRequestConfig.swift; sourceTree = "<group>"; };
@@ -95,8 +90,15 @@
 		471D62FC23B8986500001375 /* Plugins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugins.swift; sourceTree = "<group>"; };
 		4762A8B923B9B86D00497E2C /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
 		4762A8BA23B9B86D00497E2C /* ContentDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentDetailViewController.xib; sourceTree = "<group>"; };
+		4762A8BD23B9CF1C00497E2C /* TweetValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetValidator.swift; sourceTree = "<group>"; };
+		4762A8BF23B9CF2A00497E2C /* TweetFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetFetcher.swift; sourceTree = "<group>"; };
+		4762A8C123B9CF3900497E2C /* TweetHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetHandler.swift; sourceTree = "<group>"; };
+		4762A8C523BAEF8800497E2C /* TweetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsTests.swift; sourceTree = "<group>"; };
+		6A4E056D8BDC7B3FC31E0BB8 /* Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests.release.xcconfig"; path = "Target Support Files/Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests/Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests.release.xcconfig"; sourceTree = "<group>"; };
 		A847E63A7914A48E8972572D /* Pods-ThoughtworkMoment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtworkMoment.release.xcconfig"; path = "Target Support Files/Pods-ThoughtworkMoment/Pods-ThoughtworkMoment.release.xcconfig"; sourceTree = "<group>"; };
 		DC22584B1A4ACD30CE1880A4 /* Pods_ThoughtworkMoment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThoughtworkMoment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F54205C3DFAEF3285571DDFE /* Pods_ThoughtworkMoment_Tests_ThoughtworkMomentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThoughtworkMoment_Tests_ThoughtworkMomentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBE1ED0214E6447D0E280622 /* Pods-ThoughtworkMomentTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtworkMomentTests.debug.xcconfig"; path = "Target Support Files/Pods-ThoughtworkMomentTests/Pods-ThoughtworkMomentTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,13 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		471D62B323B624B200001375 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				3E6E12C7EB65EB5237F64888 /* Pods_ThoughtworkMomentTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				DC22584B1A4ACD30CE1880A4 /* Pods_ThoughtworkMoment.framework */,
+				0EFD787411A8844CD8CFC91D /* Pods_ThoughtworkMomentTests.framework */,
+				F54205C3DFAEF3285571DDFE /* Pods_ThoughtworkMoment_Tests_ThoughtworkMomentTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -138,7 +136,6 @@
 			children = (
 				471D629723B624B000001375 /* ThoughtworkMoment */,
 				471D62AE23B624B200001375 /* ThoughtworkMomentTests */,
-				471D62B923B624B200001375 /* ThoughtworkMomentUITests */,
 				471D629623B624B000001375 /* Products */,
 				96083F9EAEF34FE76E700BA0 /* Pods */,
 				1C32021D2E60CB7729BF19E2 /* Frameworks */,
@@ -150,7 +147,6 @@
 			children = (
 				471D629523B624B000001375 /* ThoughtworkMoment.app */,
 				471D62AB23B624B200001375 /* ThoughtworkMomentTests.xctest */,
-				471D62B623B624B200001375 /* ThoughtworkMomentUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -178,19 +174,10 @@
 		471D62AE23B624B200001375 /* ThoughtworkMomentTests */ = {
 			isa = PBXGroup;
 			children = (
-				471D62AF23B624B200001375 /* ThoughtworkMomentTests.swift */,
 				471D62B123B624B200001375 /* Info.plist */,
+				4762A8C523BAEF8800497E2C /* TweetsTests.swift */,
 			);
 			path = ThoughtworkMomentTests;
-			sourceTree = "<group>";
-		};
-		471D62B923B624B200001375 /* ThoughtworkMomentUITests */ = {
-			isa = PBXGroup;
-			children = (
-				471D62BA23B624B200001375 /* ThoughtworkMomentUITests.swift */,
-				471D62BC23B624B200001375 /* Info.plist */,
-			);
-			path = ThoughtworkMomentUITests;
 			sourceTree = "<group>";
 		};
 		471D62C823B62E0F00001375 /* Request */ = {
@@ -228,6 +215,9 @@
 				471D62E823B6501B00001375 /* TweetMainViewModel.swift */,
 				471D62F623B883F000001375 /* ProfileViewModel.swift */,
 				471D62FC23B8986500001375 /* Plugins.swift */,
+				4762A8BD23B9CF1C00497E2C /* TweetValidator.swift */,
+				4762A8BF23B9CF2A00497E2C /* TweetFetcher.swift */,
+				4762A8C123B9CF3900497E2C /* TweetHandler.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -270,6 +260,10 @@
 			children = (
 				1CBD136AB53E98F7BB1237C2 /* Pods-ThoughtworkMoment.debug.xcconfig */,
 				A847E63A7914A48E8972572D /* Pods-ThoughtworkMoment.release.xcconfig */,
+				FBE1ED0214E6447D0E280622 /* Pods-ThoughtworkMomentTests.debug.xcconfig */,
+				326994D7272642C00B0CD5B6 /* Pods-ThoughtworkMomentTests.release.xcconfig */,
+				022458CAEEA7F3605C5425CE /* Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests.debug.xcconfig */,
+				6A4E056D8BDC7B3FC31E0BB8 /* Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -300,9 +294,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 471D62C223B624B200001375 /* Build configuration list for PBXNativeTarget "ThoughtworkMomentTests" */;
 			buildPhases = (
+				E679991C822DE0C4A0281739 /* [CP] Check Pods Manifest.lock */,
 				471D62A723B624B200001375 /* Sources */,
 				471D62A823B624B200001375 /* Frameworks */,
 				471D62A923B624B200001375 /* Resources */,
+				8765B74B9DEC8394A8CE2554 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,24 +309,6 @@
 			productName = ThoughtworkMomentTests;
 			productReference = 471D62AB23B624B200001375 /* ThoughtworkMomentTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		471D62B523B624B200001375 /* ThoughtworkMomentUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 471D62C523B624B200001375 /* Build configuration list for PBXNativeTarget "ThoughtworkMomentUITests" */;
-			buildPhases = (
-				471D62B223B624B200001375 /* Sources */,
-				471D62B323B624B200001375 /* Frameworks */,
-				471D62B423B624B200001375 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				471D62B823B624B200001375 /* PBXTargetDependency */,
-			);
-			name = ThoughtworkMomentUITests;
-			productName = ThoughtworkMomentUITests;
-			productReference = 471D62B623B624B200001375 /* ThoughtworkMomentUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -346,10 +324,6 @@
 						CreatedOnToolsVersion = 11.3;
 					};
 					471D62AA23B624B200001375 = {
-						CreatedOnToolsVersion = 11.3;
-						TestTargetID = 471D629423B624B000001375;
-					};
-					471D62B523B624B200001375 = {
 						CreatedOnToolsVersion = 11.3;
 						TestTargetID = 471D629423B624B000001375;
 					};
@@ -370,7 +344,6 @@
 			targets = (
 				471D629423B624B000001375 /* ThoughtworkMoment */,
 				471D62AA23B624B200001375 /* ThoughtworkMomentTests */,
-				471D62B523B624B200001375 /* ThoughtworkMomentUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -389,13 +362,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		471D62A923B624B200001375 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		471D62B423B624B200001375 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -459,6 +425,58 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8765B74B9DEC8394A8CE2554 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ThoughtworkMomentTests/Pods-ThoughtworkMomentTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ThoughtworkMomentTests/Pods-ThoughtworkMomentTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E679991C822DE0C4A0281739 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ThoughtworkMomentTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -472,14 +490,17 @@
 				471D62E323B64B0600001375 /* BasicTweetCell.swift in Sources */,
 				471D62CC23B62E0F00001375 /* Configurations.swift in Sources */,
 				471D62DD23B644F900001375 /* WrappedTweets.swift in Sources */,
+				4762A8C223B9CF3900497E2C /* TweetHandler.swift in Sources */,
 				471D62F723B883F000001375 /* ProfileViewModel.swift in Sources */,
 				471D62FD23B8986500001375 /* Plugins.swift in Sources */,
 				471D62F023B71FF600001375 /* Layout.swift in Sources */,
+				4762A8C023B9CF2A00497E2C /* TweetFetcher.swift in Sources */,
 				471D62E923B6501B00001375 /* TweetMainViewModel.swift in Sources */,
 				471D62E023B64A6800001375 /* TweetSlices.swift in Sources */,
 				4762A8BB23B9B86D00497E2C /* ContentDetailViewController.swift in Sources */,
 				471D62EC23B6652100001375 /* RxExtensions.swift in Sources */,
 				471D629923B624B000001375 /* AppDelegate.swift in Sources */,
+				4762A8BE23B9CF1C00497E2C /* TweetValidator.swift in Sources */,
 				471D62FA23B88B6500001375 /* UserInfoHeaderView.swift in Sources */,
 				471D62F523B78FB900001375 /* ImageManager.swift in Sources */,
 				471D62D023B62F9100001375 /* Apis.swift in Sources */,
@@ -496,15 +517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				471D62B023B624B200001375 /* ThoughtworkMomentTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		471D62B223B624B200001375 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				471D62BB23B624B200001375 /* ThoughtworkMomentUITests.swift in Sources */,
+				4762A8C623BAEF8800497E2C /* TweetsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,11 +528,6 @@
 			isa = PBXTargetDependency;
 			target = 471D629423B624B000001375 /* ThoughtworkMoment */;
 			targetProxy = 471D62AC23B624B200001375 /* PBXContainerItemProxy */;
-		};
-		471D62B823B624B200001375 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 471D629423B624B000001375 /* ThoughtworkMoment */;
-			targetProxy = 471D62B723B624B200001375 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -697,6 +705,7 @@
 		};
 		471D62C323B624B200001375 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBE1ED0214E6447D0E280622 /* Pods-ThoughtworkMomentTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -719,6 +728,7 @@
 		};
 		471D62C423B624B200001375 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 326994D7272642C00B0CD5B6 /* Pods-ThoughtworkMomentTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -736,46 +746,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ThoughtworkMoment.app/ThoughtworkMoment";
-			};
-			name = Release;
-		};
-		471D62C623B624B200001375 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5K7P4774AQ;
-				INFOPLIST_FILE = ThoughtworkMomentUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = lulu.harly.ThoughtworkMomentUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ThoughtworkMoment;
-			};
-			name = Debug;
-		};
-		471D62C723B624B200001375 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5K7P4774AQ;
-				INFOPLIST_FILE = ThoughtworkMomentUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = lulu.harly.ThoughtworkMomentUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ThoughtworkMoment;
 			};
 			name = Release;
 		};
@@ -805,15 +775,6 @@
 			buildConfigurations = (
 				471D62C323B624B200001375 /* Debug */,
 				471D62C423B624B200001375 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		471D62C523B624B200001375 /* Build configuration list for PBXNativeTarget "ThoughtworkMomentUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				471D62C623B624B200001375 /* Debug */,
-				471D62C723B624B200001375 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

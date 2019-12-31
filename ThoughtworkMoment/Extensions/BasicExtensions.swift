@@ -20,6 +20,12 @@ extension String {
     }
 }
 
+extension Int {
+    var string: String {
+        return "\(self)"
+    }
+}
+
 extension CGFloat {
     static var screenWidth: CGFloat {
         return UIScreen.main.bounds.width

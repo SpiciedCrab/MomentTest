@@ -13,18 +13,22 @@ import RxCocoa
 import RxSwiftUtilities
 
 class TweetMainViewModel {
-    private let fire = Firer()
-    var tweetApi = TweetsApi(userName: "jsmith")
-    private var totalPage = 10
-    private var stored: [TweetInfo] = []
+    
+    // MARK: - Fields
+    // Plugins to implement
     private let tweetValidator: TweetValidator
+    private var tweetFetcher: TweetFetcher
+    private var tweetHandler: TweetHandler
+    
+    // Normal Fields
+    private var stored: [TweetInfo] = []
     private let disposeBag = DisposeBag()
     
-    // inputs
+    // Signal Inputs
     let refreshBegin: PublishRelay<Void> = PublishRelay()
     let refreshNext: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     
-    // outputs
+    // Signal Outputs
     let refreshState: BehaviorRelay<[TweetInfo]> = BehaviorRelay(value: [])
     let activityIndicator: ActivityIndicator = ActivityIndicator()
     let errorOutput: PublishRelay<String> = PublishRelay()
@@ -32,18 +36,22 @@ class TweetMainViewModel {
     // ThoughtwokrDefaultTweetValidator will limit the total count of tweets to 5,
     // So I use the ShowAllTweetValidator to ensure that the [pull up to add more]
     // feature can normally work
-    init(tweetValidator: TweetValidator = ShowAllTweetValidator()) {
+    init(tweetFetcher: TweetFetcher = NetworkTweetFetcher(),
+         tweetValidator: TweetValidator = ShowAllTweetValidator(),
+         tweetHandler: TweetHandler = SectionableTweetHandler()) {
         self.tweetValidator = tweetValidator
+        self.tweetFetcher = tweetFetcher
+        self.tweetHandler = tweetHandler
         setupBindings()
     }
     
+    // MARK: - Privates
     private func setupBindings() {
-        refreshBegin
+        refreshBegin.fixDebounce()
             .do(onNext: {[weak self] (_) in
                 guard let `self` = self else { return }
                 self.refreshNext.accept(false)
-            }).map(initPage)
-            .filter { $0 }.map { _ in  () }
+            }).map { _ in  () }
             .trackActivity(activityIndicator)
             .flatMapLatest(obsRequest)
             .map { $0.list.filter(self.tweetValidator.validate) }
@@ -54,37 +62,33 @@ class TweetMainViewModel {
             }).bind(to: refreshState)
             .disposed(by: disposeBag)
         
-        refreshNext.distinctUntilChanged().filter { $0 }
-            .map { _ in  }.map(increasePage)
-            .filter { $0 }
+        refreshNext.distinctUntilChanged()
+            .filter { $0 && self.tweetFetcher.isFirstPage }
+            .map { _ in  }
             .map { _ in self.stored }
+            .do(onNext: {[weak self] (_) in
+                guard let `self` = self else { return }
+                self.tweetFetcher.isFirstPage = false
+            })
             .bind(to: refreshState)
             .disposed(by: disposeBag)
         
     }
     
     private func initPage() -> Bool {
-        tweetApi.currentPage = 0
         return true
     }
-    
-    private func increasePage() -> Bool {
-        
-        tweetApi.currentPage += 1
-        return tweetApi.currentPage <= totalPage
-    }
-    
     
     private func obsRequest() -> Observable<Tweets> {
         return Observable.create {[weak self] (sub: AnyObserver<Result<Tweets, MomentException>>) -> Disposable in
             guard let `self` = self else { return Disposables.create() }
-            self.fire.fire(request: &self.tweetApi) { (result: Result<Tweets, MomentException>) in
+            self.tweetFetcher.refreshTweet { (result) in
                 sub.onNext(result)
                 sub.onCompleted()
             }
             
             return Disposables.create {
-                self.tweetApi.cancelToken?.cancel()
+                self.tweetFetcher.cancelFetch()
             }
         }.map(resultToTweets)
     }
@@ -101,34 +105,9 @@ class TweetMainViewModel {
     }
     
     private func sliceTwwets(tweets: [Tweet]) -> [TweetInfo] {
-        var sliced: [TweetInfo] = []
-        var index = 0;
-        for var tweet in tweets {
-            tweet.uniqueId = UUID().uuidString
-            var modules: [TweetSlicing] = []
-            let basicT = BasicTweet(tweetId: tweet.uniqueId,
-                                   content: tweet.content,
-                                   sender: tweet.sender)
-            
-            modules.append(basicT)
-            
-            if(!tweet.images.isEmpty) {
-                let imagesT = tweet.images.map{ ImageTweet(tweetId: tweet.uniqueId, image: $0) }
-                modules.append(contentsOf: imagesT)
-            }
-            
-            if(!tweet.comments.isEmpty) {
-                let commentsT = tweet.comments
-                    .map{ CommentTweet(tweetId: tweet.uniqueId, comment: $0) }
-                
-                modules.append(contentsOf: commentsT)
-            }
-            
-            sliced.append(TweetInfo(tweetId: tweet.uniqueId, index: index ,subModules: modules))
-            index += 1
-        }
+        let sliced = tweetHandler.handleTweets(tweets: tweets)
         
-        if(tweetApi.isFirstPage) {
+        if tweetFetcher.isFirstPage {
             stored = sliced
         } else {
             stored.append(contentsOf: sliced)

@@ -8,32 +8,20 @@
 
 import Foundation
 
+// MARK: - TweetValidator
 protocol TweetValidator {
     func validate(twwet: Tweet) -> Bool
 }
 
-struct ThoughtwokrDefaultTweetValidator: TweetValidator {
+// MARK: - TweetFetcher
+protocol TweetFetcher {
+    func refreshTweet(fetcher: @escaping (Result<Tweets, MomentException>) -> Void)
+    func cancelFetch()
     
-    // ignore the tweet which does not contain a content and images
-    func validate(twwet: Tweet) -> Bool {
-        return !twwet.content.isEmpty && !twwet.images.isEmpty
-    }
+    var isFirstPage: Bool { get set }
 }
 
-struct ShowAllTweetValidator: TweetValidator {
-    func validate(twwet: Tweet) -> Bool {
-        return true
-    }
-}
-
-struct NoImagesTweetValidator: TweetValidator {
-    func validate(twwet: Tweet) -> Bool {
-        return twwet.images.isEmpty
-    }
-}
-
-struct NoCommentsTweetValidator: TweetValidator {
-    func validate(twwet: Tweet) -> Bool {
-        return twwet.comments.isEmpty
-    }
+// MARK: - TweetHandler
+protocol TweetHandler {
+    func handleTweets(tweets: [Tweet]) -> [TweetInfo]
 }

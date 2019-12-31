@@ -35,42 +35,16 @@ extension UIImageView {
             let imageSize = image.size
             
             DispatchQueue(label: "imageQue").async {
-                var rectToDraw = CGRect.zero
+                
                 let imageRatio = imageSize.width / imageSize.height
                 if imageRatio > ratio {
-                    rectToDraw = CGRect(x: 0, y: 0,
-                                        width: ratio * imageSize.height,
-                                        height: imageSize.height )
-                    
-                    viewSize = CGSize(width: viewSize.height * imageRatio,  height: viewSize.height)
+                    viewSize = CGSize(width: viewSize.height * imageRatio,
+                                      height: viewSize.height)
                 } else {
-                    rectToDraw = CGRect(x: 0, y: 0,
-                                        width: viewSize.width ,
-                                        height: viewSize.width / ratio )
-                    viewSize = CGSize(width: viewSize.width,  height: viewSize.width / imageRatio)
-
+                    viewSize = CGSize(width: viewSize.width,
+                                      height: viewSize.width / imageRatio)
                 }
 
-                
-
-//                if imageSize.width <= imageSize.height {
-//                    let originY = (imageSize.height - imageSize.width) / 2
-//                    rectToDraw = CGRect(x: 0, y: originY,
-//                                        width: imageSize.width ,
-//                                        height: imageSize.width )
-//                } else {
-//                    let originX = (imageSize.width - imageSize.height) / 2
-//                    rectToDraw = CGRect(x: originX, y: 0,
-//                                        width: imageSize.height ,
-//                                        height: imageSize.height )
-//                }
-                
-//                guard let croppedCg = image.cgImage?.cropping(to: rectToDraw) else {
-//                    return
-//                }
-//
-//                let croppedImage = UIImage(cgImage: croppedCg)
-//
                 UIGraphicsBeginImageContextWithOptions(viewSize, false, UIScreen.main.scale)
                 
                 image.draw(in: CGRect(origin: CGPoint.zero, size: viewSize))
@@ -88,11 +62,6 @@ extension UIImageView {
                 }
                 
                 ImageManager.shared.cacheImage(path: path, image: realImage)
-            }
-            
-            DispatchQueue.main.async() {
-                
-                
             }
         }
         
