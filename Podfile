@@ -10,7 +10,6 @@ target 'ThoughtworkMoment' do
  pod 'CleanJSON'
  pod 'RxSwift'
  pod 'RxCocoa'
- pod 'RxSwiftUtilities', :git => 'https://github.com/RxSwiftCommunity/RxSwiftUtilities.git'
  pod 'ESPullToRefresh'
 
 end

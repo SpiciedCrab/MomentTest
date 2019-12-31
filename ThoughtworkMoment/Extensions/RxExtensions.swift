@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 import RxRelay
 import RxCocoa
-import RxSwiftUtilities
 import UIKit
 
 typealias FireType<T> = ((Result<T, MomentException>) -> Void) -> Void

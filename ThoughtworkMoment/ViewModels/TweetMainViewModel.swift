@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 import RxRelay
 import RxCocoa
-import RxSwiftUtilities
 
 class TweetMainViewModel {
     
@@ -30,7 +29,6 @@ class TweetMainViewModel {
     
     // Signal Outputs
     let refreshState: BehaviorRelay<[TweetInfo]> = BehaviorRelay(value: [])
-    let activityIndicator: ActivityIndicator = ActivityIndicator()
     let errorOutput: PublishRelay<String> = PublishRelay()
     let touchEndPage: BehaviorRelay<Bool> = BehaviorRelay(value: false)
 
@@ -48,20 +46,20 @@ class TweetMainViewModel {
     
     // MARK: - Privates
     private func setupBindings() {
-        refreshBegin.fixDebounce()
+        refreshBegin
             .do(onNext: {[weak self] (_) in
                 guard let `self` = self else { return }
                 self.refreshNext.accept(false)
                 self.touchEndPage.accept(false)
             }).map { _ in  () }
             .flatMapLatest(obsRequest)
-            .trackActivity(activityIndicator)
             .map { $0.list.filter(self.tweetValidator.validate) }
             .map(sliceTwwets).catchError({[weak self] (error)  in
                 guard let self = self else { return Observable.of([]) }
                 self.errorOutput.accept(error.localizedDescription)
                 return Observable.of([])
-            }).bind(to: refreshState)
+            })
+            .bind(to: refreshState)
             .disposed(by: disposeBag)
         
         refreshNext.distinctUntilChanged()

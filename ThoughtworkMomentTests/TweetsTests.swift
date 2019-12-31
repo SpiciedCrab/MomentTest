@@ -50,7 +50,7 @@ class TweetsTests: XCTestCase {
     // Testing pulling down and pulling up
     func testTweetsCounts() {
         testViewModel.refreshBegin.accept(())
-        let result = try? testViewModel.refreshState.toBlocking().first()
+        let result = try? testViewModel.refreshState.toBlocking().last()
         guard let realResult = result else {
             XCTFail("Result do not exist")
             return
@@ -61,7 +61,7 @@ class TweetsTests: XCTestCase {
         
         testViewModel.refreshNext.accept(true)
         
-        let refreshedResult = try? testViewModel.refreshState.toBlocking().first()
+        let refreshedResult = try? testViewModel.refreshState.toBlocking().last()
         guard let realRefreshedResult = refreshedResult else {
             XCTFail("Result do not exist")
             return

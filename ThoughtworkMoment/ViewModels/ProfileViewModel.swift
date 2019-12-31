@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 import RxRelay
 import RxCocoa
-import RxSwiftUtilities
 
 class ProfileViewModel {
     private let fire = Firer()

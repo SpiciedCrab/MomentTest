@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxRelay
 import RxCocoa
-import RxSwiftUtilities
 
 class UserInfoHeaderView: UICollectionReusableView {
     

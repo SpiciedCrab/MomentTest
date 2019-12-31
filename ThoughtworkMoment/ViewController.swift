@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxRelay
 import RxCocoa
-import RxSwiftUtilities
 import ESPullToRefresh
 
 class ViewController: UIViewController {
@@ -76,12 +75,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         collectionView.contentInsetAdjustmentBehavior = .never
-        
-        viewModel.activityIndicator
-            .drive(UIApplication.shared
-                .rx
-                .isNetworkActivityIndicatorVisible)
-            .disposed(by: disposeBag)
         
         viewModel.refreshState.observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: {[weak self] (infos) in
