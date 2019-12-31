@@ -40,6 +40,9 @@
 		4762A8C023B9CF2A00497E2C /* TweetFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762A8BF23B9CF2A00497E2C /* TweetFetcher.swift */; };
 		4762A8C223B9CF3900497E2C /* TweetHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762A8C123B9CF3900497E2C /* TweetHandler.swift */; };
 		4762A8C623BAEF8800497E2C /* TweetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762A8C523BAEF8800497E2C /* TweetsTests.swift */; };
+		4762A8C823BB0F2C00497E2C /* CommonSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762A8C723BB0F2C00497E2C /* CommonSettings.swift */; };
+		4762A8CD23BB342000497E2C /* BottomLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762A8CB23BB342000497E2C /* BottomLineView.swift */; };
+		4762A8CE23BB342000497E2C /* BottomLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4762A8CC23BB342000497E2C /* BottomLineView.xib */; };
 		5BA4483A5685D719CE5AE1A5 /* Pods_ThoughtworkMoment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC22584B1A4ACD30CE1880A4 /* Pods_ThoughtworkMoment.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +97,9 @@
 		4762A8BF23B9CF2A00497E2C /* TweetFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetFetcher.swift; sourceTree = "<group>"; };
 		4762A8C123B9CF3900497E2C /* TweetHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetHandler.swift; sourceTree = "<group>"; };
 		4762A8C523BAEF8800497E2C /* TweetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsTests.swift; sourceTree = "<group>"; };
+		4762A8C723BB0F2C00497E2C /* CommonSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSettings.swift; sourceTree = "<group>"; };
+		4762A8CB23BB342000497E2C /* BottomLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLineView.swift; sourceTree = "<group>"; };
+		4762A8CC23BB342000497E2C /* BottomLineView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomLineView.xib; sourceTree = "<group>"; };
 		6A4E056D8BDC7B3FC31E0BB8 /* Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests.release.xcconfig"; path = "Target Support Files/Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests/Pods-ThoughtworkMoment-Tests-ThoughtworkMomentTests.release.xcconfig"; sourceTree = "<group>"; };
 		A847E63A7914A48E8972572D /* Pods-ThoughtworkMoment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtworkMoment.release.xcconfig"; path = "Target Support Files/Pods-ThoughtworkMoment/Pods-ThoughtworkMoment.release.xcconfig"; sourceTree = "<group>"; };
 		DC22584B1A4ACD30CE1880A4 /* Pods_ThoughtworkMoment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThoughtworkMoment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +239,9 @@
 				471D62F923B88B6500001375 /* UserInfoHeaderView.xib */,
 				4762A8B923B9B86D00497E2C /* ContentDetailViewController.swift */,
 				4762A8BA23B9B86D00497E2C /* ContentDetailViewController.xib */,
+				4762A8C723BB0F2C00497E2C /* CommonSettings.swift */,
+				4762A8CB23BB342000497E2C /* BottomLineView.swift */,
+				4762A8CC23BB342000497E2C /* BottomLineView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -358,6 +367,7 @@
 				471D62A223B624B200001375 /* Assets.xcassets in Resources */,
 				471D62FB23B88B6500001375 /* UserInfoHeaderView.xib in Resources */,
 				471D62A023B624B000001375 /* Main.storyboard in Resources */,
+				4762A8CE23BB342000497E2C /* BottomLineView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +504,7 @@
 				471D62F723B883F000001375 /* ProfileViewModel.swift in Sources */,
 				471D62FD23B8986500001375 /* Plugins.swift in Sources */,
 				471D62F023B71FF600001375 /* Layout.swift in Sources */,
+				4762A8C823BB0F2C00497E2C /* CommonSettings.swift in Sources */,
 				4762A8C023B9CF2A00497E2C /* TweetFetcher.swift in Sources */,
 				471D62E923B6501B00001375 /* TweetMainViewModel.swift in Sources */,
 				471D62E023B64A6800001375 /* TweetSlices.swift in Sources */,
@@ -508,6 +519,7 @@
 				471D62CB23B62E0F00001375 /* Firer.swift in Sources */,
 				471D62CE23B62E4B00001375 /* DemoRequestConfig.swift in Sources */,
 				471D62E523B64D2B00001375 /* ImageCell.swift in Sources */,
+				4762A8CD23BB342000497E2C /* BottomLineView.swift in Sources */,
 				471D62E723B64E4D00001375 /* CommentCell.swift in Sources */,
 				471D62EE23B6EFF900001375 /* BasicExtensions.swift in Sources */,
 			);

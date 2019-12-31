@@ -12,8 +12,9 @@ import RxRelay
 import RxCocoa
 import RxSwiftUtilities
 
-class CommentCell: UICollectionViewCell, CellProviding {
+class CommentCell: UICollectionViewCell {
     
+    // MARK: - UIs
     @IBOutlet weak private var nickNameLabel: UILabel!
     @IBOutlet weak private var commentLabel: UILabel!
     @IBOutlet weak private var labelConstraint: NSLayoutConstraint!
@@ -21,16 +22,20 @@ class CommentCell: UICollectionViewCell, CellProviding {
     @IBOutlet weak private var trailing: NSLayoutConstraint!
     @IBOutlet weak private var leading: NSLayoutConstraint!
     
+    // MARK: - Lifecycles
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    override func updateConstraints() {
-        super.updateConstraints()
-        
-    }
+    private var tweet: CommentTweet?
     
-    var tweet: CommentTweet?
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        tweet?.disposeBag = DisposeBag()
+    }
+}
+
+extension CommentCell: CellProviding {
     func setup(vm: TweetSlicing) {
         guard let commentSlicing = vm as? CommentTweet else {
             return
@@ -45,8 +50,4 @@ class CommentCell: UICollectionViewCell, CellProviding {
         }).disposed(by: commentSlicing.disposeBag)
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        tweet?.disposeBag = DisposeBag()
-    }
 }

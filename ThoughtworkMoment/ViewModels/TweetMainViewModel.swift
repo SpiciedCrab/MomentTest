@@ -32,6 +32,7 @@ class TweetMainViewModel {
     let refreshState: BehaviorRelay<[TweetInfo]> = BehaviorRelay(value: [])
     let activityIndicator: ActivityIndicator = ActivityIndicator()
     let errorOutput: PublishRelay<String> = PublishRelay()
+    let touchEndPage: BehaviorRelay<Bool> = BehaviorRelay(value: false)
 
     // ThoughtwokrDefaultTweetValidator will limit the total count of tweets to 5,
     // So I use the ShowAllTweetValidator to ensure that the [pull up to add more]
@@ -51,9 +52,10 @@ class TweetMainViewModel {
             .do(onNext: {[weak self] (_) in
                 guard let `self` = self else { return }
                 self.refreshNext.accept(false)
+                self.touchEndPage.accept(false)
             }).map { _ in  () }
-            .trackActivity(activityIndicator)
             .flatMapLatest(obsRequest)
+            .trackActivity(activityIndicator)
             .map { $0.list.filter(self.tweetValidator.validate) }
             .map(sliceTwwets).catchError({[weak self] (error)  in
                 guard let self = self else { return Observable.of([]) }
@@ -69,6 +71,7 @@ class TweetMainViewModel {
             .do(onNext: {[weak self] (_) in
                 guard let `self` = self else { return }
                 self.tweetFetcher.isFirstPage = false
+                self.touchEndPage.accept(true)
             })
             .bind(to: refreshState)
             .disposed(by: disposeBag)
@@ -113,6 +116,7 @@ class TweetMainViewModel {
             stored.append(contentsOf: sliced)
         }
         
+        touchEndPage.accept(stored.count <= 5)
         return stored.count >= 5 ? ([] + stored.prefix(upTo: 5)) : stored
     }
 }

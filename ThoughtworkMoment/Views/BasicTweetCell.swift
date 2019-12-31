@@ -8,7 +8,9 @@
 
 import UIKit
 import RxSwift
-class BasicTweetCell: UICollectionViewCell, CellProviding {
+class BasicTweetCell: UICollectionViewCell {
+    
+    // MARK: - UIs
     @IBOutlet private weak var avatarImage: UIImageView!
     @IBOutlet private weak var contentLabel: UILabel!
     @IBOutlet private weak var nickNameLabel: UILabel!
@@ -18,12 +20,21 @@ class BasicTweetCell: UICollectionViewCell, CellProviding {
     
     private var disposeBag = DisposeBag()
     
+    // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         container.translatesAutoresizingMaskIntoConstraints = false
         contentLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarImage.reset()
+        disposeBag = DisposeBag()
+    }
+}
+
+extension BasicTweetCell: CellProviding {
     
     func setup(vm: TweetSlicing) {
         guard let basicSlicing = vm as? BasicTweet else {
@@ -41,11 +52,5 @@ class BasicTweetCell: UICollectionViewCell, CellProviding {
             }).disposed(by: disposeBag)
         
         labelConstraint.constant = CGFloat.screenWidth
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        avatarImage.cancelDownloading()
-        disposeBag = DisposeBag()
     }
 }

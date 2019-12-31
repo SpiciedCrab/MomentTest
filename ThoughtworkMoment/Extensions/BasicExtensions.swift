@@ -54,3 +54,23 @@ extension UIViewController {
         return vc
     }
 }
+
+extension UICollectionReusableView {
+    static var reuseId: String {
+        return "\(Self.self)"
+    }
+}
+
+extension UICollectionView {
+    func register<View: UICollectionReusableView>
+        (view: View.Type, forSupplementaryViewOfKind: String) {
+        register(UINib(nibName: View.reuseId,
+                       bundle: Bundle.main),
+                 forSupplementaryViewOfKind: forSupplementaryViewOfKind,
+                 withReuseIdentifier: View.reuseId)
+    }
+    
+    func dequeueReusableSupplementaryView<View: UICollectionReusableView>(view: View.Type , of kind: String, for indexPath: IndexPath) -> View? {
+        return dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: View.reuseId, for: indexPath) as? View
+    }
+}

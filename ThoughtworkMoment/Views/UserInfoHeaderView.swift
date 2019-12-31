@@ -29,7 +29,7 @@ class UserInfoHeaderView: UICollectionReusableView {
         profileViewModel.refreshUserInfo.onNext(())
     }
     
-    
+    // MARK: - Privates
     private func initialBindings() {
         profileViewModel.userNameBinding.asDriver()
             .drive(nickLabel.rx.text)

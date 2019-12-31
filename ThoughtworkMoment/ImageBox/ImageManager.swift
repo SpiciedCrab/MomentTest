@@ -11,6 +11,7 @@ import UIKit
 
 class ImageManager {
     static let shared: ImageManager = ImageManager()
+    
     private var sessionCache: [String: URLSessionDataTask] = [:]
     private var imageCache: [String: UIImage] = [:]
     private let imageSignal = DispatchSemaphore(value: 1)
@@ -42,6 +43,10 @@ class ImageManager {
     
     func findCachedImage(path: String) -> UIImage? {
         return imageCache[path]
+    }
+    
+    func existCachedImage(path: String) -> Bool {
+        return imageCache.keys.contains(path)
     }
     
     func clearCache() {

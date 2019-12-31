@@ -1,0 +1,59 @@
+PODS:
+  - CleanJSON (1.0.0)
+  - ESPullToRefresh (2.9)
+  - RxBlocking (5.0.1):
+    - RxSwift (~> 5)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
+  - RxSwiftUtilities (2.1.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxTest (5.0.1):
+    - RxSwift (~> 5)
+
+DEPENDENCIES:
+  - CleanJSON
+  - ESPullToRefresh
+  - RxBlocking
+  - RxCocoa
+  - RxSwift
+  - RxSwiftUtilities (from `https://github.com/RxSwiftCommunity/RxSwiftUtilities.git`)
+  - RxTest
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CleanJSON
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - ESPullToRefresh
+    - RxBlocking
+    - RxTest
+
+EXTERNAL SOURCES:
+  RxSwiftUtilities:
+    :git: https://github.com/RxSwiftCommunity/RxSwiftUtilities.git
+
+CHECKOUT OPTIONS:
+  RxSwiftUtilities:
+    :commit: a3e91fb9ea003c42325975f4d05d9df3d3b196d0
+    :git: https://github.com/RxSwiftCommunity/RxSwiftUtilities.git
+
+SPEC CHECKSUMS:
+  CleanJSON: 702dd619e1329c6399a579aa19af311acf47e461
+  ESPullToRefresh: ce058a36454a5032519cc9d8b45da217728cf104
+  RxBlocking: c5e090f42d046df8b0e7752742510f349963710f
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  RxSwiftUtilities: aec9603eb9e3577bfefea79c7ea610b9f6248a09
+  RxTest: 0132f952a61da82d5233abedaa559df91e5330e5
+
+PODFILE CHECKSUM: 5fcbe00ae63e8881b12610699438bfd1fe8041d6
+
+COCOAPODS: 1.6.1

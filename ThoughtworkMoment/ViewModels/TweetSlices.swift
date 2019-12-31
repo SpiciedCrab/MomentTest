@@ -106,7 +106,7 @@ class ImageTweet: TweetSlicing {
     }
     
     var cellWidth: CGFloat {
-        return (CGFloat.screenWidth - 40 - 30) / 3
+        return (CGFloat.screenWidth - leftPadding - rightPadding) / 3
     }
 }
 

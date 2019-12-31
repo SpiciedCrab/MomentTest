@@ -15,9 +15,9 @@ import UIKit
 
 typealias FireType<T> = ((Result<T, MomentException>) -> Void) -> Void
 
-extension PublishSubject {
+extension ObservableType {
     func fixDebounce() -> Observable<Element> {
-        return self
+        return self.debounce(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.asyncInstance)
     }
 }
 

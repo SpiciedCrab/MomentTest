@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 protocol UICollectionViewDelegateLeftAlignedLayout: UICollectionViewDelegateFlowLayout {
     
 }
@@ -67,7 +68,7 @@ class AlighLeftFlowLayout: UICollectionViewFlowLayout {
         
         if isFirstItemInRow {
             currentItemAttributes.leftAlignFrame(with: sectionInset,
-                                                 margin: currentFrame.width == currentFrame.height ? 50 : 0)
+                                                 margin: currentFrame.width == currentFrame.height ? leftPadding : 0)
             return currentItemAttributes
         }
         

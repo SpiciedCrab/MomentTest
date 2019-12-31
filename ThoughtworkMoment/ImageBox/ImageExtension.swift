@@ -11,7 +11,7 @@ import UIKit
 
 extension UIImageView {
     
-    func networkImage(path: String, size: CGSize ) {
+    func networkImage(path: String, size: CGSize, onCompleted: ((UIImage) -> ())? = nil ) {
         guard let url = URL(string: path) else {
             return
         }
@@ -23,6 +23,9 @@ extension UIImageView {
         
         var viewSize = size
         let ratio = size.width / size.height
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = 0
+        }
         let task = URLSession.shared.dataTask(with: url) { data, resp, error in
             ImageManager.shared.finishSession(key: "\(self.hashValue)")
             guard let httpURLResponse = resp as? HTTPURLResponse,
@@ -30,7 +33,12 @@ extension UIImageView {
                 let mimeType = httpURLResponse.mimeType,
                 mimeType.hasPrefix("image"),
                 let data = data, error == nil,
-                let image = UIImage(data: data) else { return }
+                let image = UIImage(data: data) else {
+                    DispatchQueue.main.async {
+                        self.alpha = 1
+                    }
+                    return
+            }
             
             let imageSize = image.size
             
@@ -50,7 +58,7 @@ extension UIImageView {
                 image.draw(in: CGRect(origin: CGPoint.zero, size: viewSize))
                 
                 let drawedImage = UIGraphicsGetImageFromCurrentImageContext()
-                
+            
                 UIGraphicsEndImageContext()
                 
                 guard let realImage = drawedImage else {
@@ -59,8 +67,10 @@ extension UIImageView {
                 
                 DispatchQueue.main.async {
                     self.image = realImage
+                    UIView.animate(withDuration: 0.3) {
+                        self.alpha = 1
+                    }
                 }
-                
                 ImageManager.shared.cacheImage(path: path, image: realImage)
             }
         }
@@ -71,6 +81,12 @@ extension UIImageView {
     
     func cancelDownloading() {
         ImageManager.shared.cancelSession(key: "\(hashValue)")
+        alpha = 1
+    }
+    
+    func reset() {
+        cancelDownloading()
+        image = nil
     }
 }
 
